@@ -1,3 +1,12 @@
+'''
+This file will download the latest ARRL Newsline MP3, and insert the user provided
+callsign.mp3 file at the start middle and end. 
+
+This prepares the file for transmission over the air, with sufficient callsign
+transmissions during the "broadcast" to meet legal requirements. 
+'''
+
+
 from pydub import AudioSegment
 import urllib.request
 import pygame
@@ -31,6 +40,7 @@ def splitThree(sound, callsign):
 	third_segment = sound[360000:540000] #6-9
 	fourth_segment = sound[540000:720000] #9-12
 	fifth_segment = sound[900000:] #12-end
+
 
 	# Concatenate the sections
 	full_with_call = callsign + first_segment + callsign + second_segment + callsign + third_segment + callsign + fourth_segment + callsign + fifth_segment + callsign
